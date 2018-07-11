@@ -1,0 +1,1 @@
+"Source\main.c" OMF2 ROM(COMPACT) OPTIMIZE (1,SPEED) BROWSE INCDIR(..\..\Include) DEBUG PRINT(.\LST\main.lst) OBJECT(.\Output\main.obj)
