@@ -48,8 +48,7 @@ void main (void)
     UART0_ini_115200();
     TM0_ini();
     g_timer0Over=0;
-    g_timer0Counter=5000;
-    g_timer0Counter=0;
+    g_timer0Counter=2000;
     g_progarmflag=0;
 while(1)
 {

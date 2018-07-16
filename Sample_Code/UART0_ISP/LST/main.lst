@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   MAIN                                                              07/10/2018 08:25:37 PAGE 1   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN
@@ -62,137 +62,136 @@ line level    source
   43          
   44          void main (void)
   45          {
-C51 COMPILER V9.53.0.0   MAIN                                                              07/10/2018 08:25:37 PAGE 2   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 2   
 
   46   1          P0M1 = 0x00;
   47   1          P0M2 = 0x00;
   48   1          UART0_ini_115200();
   49   1          TM0_ini();
   50   1          g_timer0Over=0;
-  51   1          g_timer0Counter=5000;
-  52   1          g_timer0Counter=0;
-  53   1          g_progarmflag=0;
-  54   1      while(1)
-  55   1      {
-  56   2                      if(bUartDataReady == 1)
-  57   2                                      {
-  58   3                                              EA=0; 
-  59   3                          if(Xor())
-  60   3                          {           
-  61   4                                              switch(uart_rcvbuf[0])
-  62   4                                              {                                                               
-  63   5                                                      case CMD_SYNC_PACKNO:
-  64   5                                                      {
-  65   6                                                              Send_64byte_To_UART0();         
-  66   6                                                              g_timer0Counter=0; 
-  67   6                                                              g_timer0Over=0;
-  68   6                                                      
-  69   6                                                      break;
-  70   6                                                      }
-  71   5                      
-  72   5                                                      case PAGE_ERASE_AP:                                             
-  73   5                                                      {
-  74   6                                                      
-  75   6                                                              TA=0xAA;        //set_IAPEN;            
-  76   6                                                              TA=0x55;
-  77   6                                                              CHPCON |= SET_BIT0 ;    
-  78   6                                                              TA=0xAA;        //set_APUEN;
-  79   6                                                              TA=0x55;
-  80   6                                                              IAPUEN |= SET_BIT0;
-  81   6                                                              IAPFD = 0xFF;                           //Erase must set IAPFD = 0xFF
-  82   6                                                              IAPCN = PAGE_ERASE_AP;
-  83   6                                                              
-  84   6                                                              for(flash_address=0x0000;flash_address<APROM_SIZE/PAGE_SIZE;flash_address++)
-  85   6                                                              {        
-  86   7                                                                      IAPAL = LOBYTE(flash_address*PAGE_SIZE);
-  87   7                                                                      IAPAH = HIBYTE(flash_address*PAGE_SIZE);
-  88   7                                                                      TA=0xAA;                        //trigger IAP
-  89   7                                                                      TA=0x55;
-  90   7                                                                      IAPTRG |= SET_BIT0 ;
-  91   7                                                              }                                                                       
-  92   6                                                              Send_64byte_To_UART0(); 
-  93   6                                                              break;
-  94   6                                                      }
-  95   5                              case CMD_UPDATE_APROM:
-  96   5                              {
-  97   6                                  flash_address=uart_rcvbuf[4];
-  98   6                                                              flash_address|=(uart_rcvbuf[5]<<8);
-  99   6                                  for(count=8;count<UartBufSize;count++)
- 100   6                                                      {
- 101   7                                                              IAPCN = BYTE_PROGRAM_AP;                                        //program byte
- 102   7                                                              IAPAL =flash_address&0xff;
- 103   7                                                              IAPAH =flash_address>>8;
- 104   7                                                              IAPFD=uart_rcvbuf[count];
- 105   7                                                              TA=0xAA;                //trigger IAP
- 106   7                                                              TA=0x55;
- 107   7                                                              IAPTRG |= SET_BIT0 ;                    
-C51 COMPILER V9.53.0.0   MAIN                                                              07/10/2018 08:25:37 PAGE 3   
+  51   1          g_timer0Counter=2000;
+  52   1          g_progarmflag=0;
+  53   1      while(1)
+  54   1      {
+  55   2                      if(bUartDataReady == 1)
+  56   2                                      {
+  57   3                                              EA=0; 
+  58   3                          if(Xor())
+  59   3                          {           
+  60   4                                              switch(uart_rcvbuf[0])
+  61   4                                              {                                                               
+  62   5                                                      case CMD_SYNC_PACKNO:
+  63   5                                                      {
+  64   6                                                              Send_64byte_To_UART0();         
+  65   6                                                              g_timer0Counter=0; 
+  66   6                                                              g_timer0Over=0;
+  67   6                                                      
+  68   6                                                      break;
+  69   6                                                      }
+  70   5                      
+  71   5                                                      case PAGE_ERASE_AP:                                             
+  72   5                                                      {
+  73   6                                                      
+  74   6                                                              TA=0xAA;        //set_IAPEN;            
+  75   6                                                              TA=0x55;
+  76   6                                                              CHPCON |= SET_BIT0 ;    
+  77   6                                                              TA=0xAA;        //set_APUEN;
+  78   6                                                              TA=0x55;
+  79   6                                                              IAPUEN |= SET_BIT0;
+  80   6                                                              IAPFD = 0xFF;                           //Erase must set IAPFD = 0xFF
+  81   6                                                              IAPCN = PAGE_ERASE_AP;
+  82   6                                                              
+  83   6                                                              for(flash_address=0x0000;flash_address<APROM_SIZE/PAGE_SIZE;flash_address++)
+  84   6                                                              {        
+  85   7                                                                      IAPAL = LOBYTE(flash_address*PAGE_SIZE);
+  86   7                                                                      IAPAH = HIBYTE(flash_address*PAGE_SIZE);
+  87   7                                                                      TA=0xAA;                        //trigger IAP
+  88   7                                                                      TA=0x55;
+  89   7                                                                      IAPTRG |= SET_BIT0 ;
+  90   7                                                              }                                                                       
+  91   6                                                              Send_64byte_To_UART0(); 
+  92   6                                                              break;
+  93   6                                                      }
+  94   5                              case CMD_UPDATE_APROM:
+  95   5                              {
+  96   6                                  flash_address=uart_rcvbuf[4];
+  97   6                                                              flash_address|=(uart_rcvbuf[5]<<8);
+  98   6                                  for(count=8;count<UartBufSize;count++)
+  99   6                                                      {
+ 100   7                                                              IAPCN = BYTE_PROGRAM_AP;                                        //program byte
+ 101   7                                                              IAPAL =flash_address&0xff;
+ 102   7                                                              IAPAH =flash_address>>8;
+ 103   7                                                              IAPFD=uart_rcvbuf[count];
+ 104   7                                                              TA=0xAA;                //trigger IAP
+ 105   7                                                              TA=0x55;
+ 106   7                                                              IAPTRG |= SET_BIT0 ;                    
+ 107   7                                                              IAPCN = BYTE_READ_AP;                                                   //program byte verify
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 3   
 
- 108   7                                                              IAPCN = BYTE_READ_AP;                                                   //program byte verify
- 109   7                                                              TA=0xAA;                        //trigger IAP
- 110   7                                                              TA=0x55;
- 111   7                                                              IAPTRG |= SET_BIT0 ;  
- 112   7                                                              if(IAPFD!=uart_rcvbuf[count])
- 113   7                                                              while(1);                                                                                                       
- 114   7                                                              if (CHPCON==0x43)                                                       //if error flag set, program error stop ISP
- 115   7                                                              while(1);
- 116   7                                  flash_address++;
- 117   7                                                      } 
- 118   6                                      Send_64byte_To_UART0();
- 119   6                              break;
- 120   6                                                      
- 121   6                              }
- 122   5                              case CMD_RUN_APROM:
- 123   5                              {
- 124   6                                  Send_64byte_To_UART0();
- 125   6                                  goto _APROM;
- 126   6                              }
- 127   5                                                      
- 128   5                                              }       
- 129   4                      }else Send_Error_To_UART0();
- 130   3                                      bUartDataReady = 0;
- 131   3                                          bufhead = 0;                                                
- 132   3                                              EA=1;
- 133   3                              }
- 134   2                   if(g_timer0Over==1)
- 135   2                              {                        
- 136   3                               goto _APROM;
- 137   3                              }
- 138   2              if(g_timer1Over==1)
- 139   2                              {                        
- 140   3                               if((bufhead<UartBufSize)&&(bufhead>0)||(bufhead>UartBufSize))
- 141   3                                 {
- 142   4                                       bufhead=0;                              
- 143   4                                 }
- 144   3                              }       
- 145   2      
- 146   2      }   
+ 108   7                                                              TA=0xAA;                        //trigger IAP
+ 109   7                                                              TA=0x55;
+ 110   7                                                              IAPTRG |= SET_BIT0 ;  
+ 111   7                                                              if(IAPFD!=uart_rcvbuf[count])
+ 112   7                                                              while(1);                                                                                                       
+ 113   7                                                              if (CHPCON==0x43)                                                       //if error flag set, program error stop ISP
+ 114   7                                                              while(1);
+ 115   7                                  flash_address++;
+ 116   7                                                      } 
+ 117   6                                      Send_64byte_To_UART0();
+ 118   6                              break;
+ 119   6                                                      
+ 120   6                              }
+ 121   5                              case CMD_RUN_APROM:
+ 122   5                              {
+ 123   6                                  Send_64byte_To_UART0();
+ 124   6                                  goto _APROM;
+ 125   6                              }
+ 126   5                                                      
+ 127   5                                              }       
+ 128   4                      }else Send_Error_To_UART0();
+ 129   3                                      bUartDataReady = 0;
+ 130   3                                          bufhead = 0;                                                
+ 131   3                                              EA=1;
+ 132   3                              }
+ 133   2                   if(g_timer0Over==1)
+ 134   2                              {                        
+ 135   3                               goto _APROM;
+ 136   3                              }
+ 137   2              if(g_timer1Over==1)
+ 138   2                              {                        
+ 139   3                               if((bufhead<UartBufSize)&&(bufhead>0)||(bufhead>UartBufSize))
+ 140   3                                 {
+ 141   4                                       bufhead=0;                              
+ 142   4                                 }
+ 143   3                              }       
+ 144   2      
+ 145   2      }   
+ 146   1      
  147   1      
  148   1      
- 149   1      
- 150   1      _APROM:
- 151   1          TA = 0xAA;
- 152   1          TA = 0x55;
- 153   1          CHPCON &= 0xFD;                 
- 154   1          TA = 0xAA;
- 155   1          TA = 0x55;
- 156   1          CHPCON |= 0x80;                  
- 157   1          while(1);   
- 158   1      }
+ 149   1      _APROM:
+ 150   1          TA = 0xAA;
+ 151   1          TA = 0x55;
+ 152   1          CHPCON &= 0xFD;                 
+ 153   1          TA = 0xAA;
+ 154   1          TA = 0x55;
+ 155   1          CHPCON |= 0x80;                  
+ 156   1          while(1);   
+ 157   1      }
+ 158          
  159          
- 160          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    501    ----
+   CODE SIZE        =    495    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V9.53.0.0   MAIN                                                              07/10/2018 08:25:37 PAGE 4   
-
    BIT SIZE         =   ----    ----
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 4   
+
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----

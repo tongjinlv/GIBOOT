@@ -3,7 +3,57 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
-C:\Users\Cat\Desktop\N76E003用户资料\BOOT\Sample_Code\UART0_ISP\ISP_UART0.uvproj
+K:\2018\Prj\BlockSoft\GIBOOT\Sample_Code\UART0_ISP\ISP_UART0.uvproj
 Project File Date:  02/21/2018
 
 <h2>Output:</h2>
+compiling main.c...
+Source\main.c - 0 Error(s), 0 Warning(s).
+Build target 'UART_mode_2'
+linking...
+Program Size: data=24.5 xdata=160 const=0 code=830
+creating hex file from ".\Output\ISP_UART0"...
+User command #1: .\output\hex2bin.exe .\output\ISP_UART0.hex
+hex2bin v1.0.8, Copyright (C) 1998 Jacques Pelletier
+checksum extensions Copyright (C) 2004 Rockwell Automation
+improved P.G. 2007
+Lowest address  = 00000000
+Highest address = 0000034B
+Pad Byte        = FF
+8-bit Checksum = 5D
+".\Output\ISP_UART0" - 0 Error(s), 0 Warning(s).
+Load "K:\\2018\\Prj\\BlockSoft\\GIBOOT\\Sample_Code\\UART0_ISP\\Output\\ISP_UART0" 
+Flash Erase Done.
+Flash Write Done: 830 bytes programmed.
+Flash Verify Done: 830 bytes verified.
+Build target 'UART_mode_2'
+compiling main.c...
+linking...
+Program Size: data=24.5 xdata=160 const=0 code=830
+creating hex file from ".\Output\ISP_UART0"...
+User command #1: .\output\hex2bin.exe .\output\ISP_UART0.hex
+hex2bin v1.0.8, Copyright (C) 1998 Jacques Pelletier
+checksum extensions Copyright (C) 2004 Rockwell Automation
+improved P.G. 2007
+Lowest address  = 00000000
+Highest address = 0000034B
+Pad Byte        = FF
+8-bit Checksum = 99
+".\Output\ISP_UART0" - 0 Error(s), 0 Warning(s).
+Load "K:\\2018\\Prj\\BlockSoft\\GIBOOT\\Sample_Code\\UART0_ISP\\Output\\ISP_UART0" 
+Flash Erase Done.
+Flash Write Done: 830 bytes programmed.
+Flash Verify Done: 830 bytes verified.
+Build target 'UART_mode_2'
+linking...
+Program Size: data=24.5 xdata=160 const=0 code=830
+creating hex file from ".\Output\ISP_UART0"...
+User command #1: .\output\hex2bin.exe .\output\ISP_UART0.hex
+hex2bin v1.0.8, Copyright (C) 1998 Jacques Pelletier
+checksum extensions Copyright (C) 2004 Rockwell Automation
+improved P.G. 2007
+Lowest address  = 00000000
+Highest address = 0000034B
+Pad Byte        = FF
+8-bit Checksum = 99
+".\Output\ISP_UART0" - 0 Error(s), 0 Warning(s).
