@@ -1,4 +1,4 @@
-C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 1   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:32:06 PAGE 1   
 
 
 C51 COMPILER V9.53.0.0, COMPILATION OF MODULE MAIN
@@ -62,14 +62,14 @@ line level    source
   43          
   44          void main (void)
   45          {
-C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 2   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:32:06 PAGE 2   
 
   46   1          P0M1 = 0x00;
   47   1          P0M2 = 0x00;
   48   1          UART0_ini_115200();
   49   1          TM0_ini();
   50   1          g_timer0Over=0;
-  51   1          g_timer0Counter=2000;
+  51   1          g_timer0Counter=5000;
   52   1          g_progarmflag=0;
   53   1      while(1)
   54   1      {
@@ -126,7 +126,7 @@ line level    source
  105   7                                                              TA=0x55;
  106   7                                                              IAPTRG |= SET_BIT0 ;                    
  107   7                                                              IAPCN = BYTE_READ_AP;                                                   //program byte verify
-C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 3   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:32:06 PAGE 3   
 
  108   7                                                              TA=0xAA;                        //trigger IAP
  109   7                                                              TA=0x55;
@@ -190,7 +190,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    DATA SIZE        =      6    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:02:50 PAGE 4   
+C51 COMPILER V9.53.0.0   MAIN                                                              07/16/2018 21:32:06 PAGE 4   
 
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
